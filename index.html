@@ -428,28 +428,69 @@
     </section>
 
     <!-- ====================================================================
-         СЦЕНА 7: ФИНАЛ
+         СЦЕНА 7: ОТВЕТНОЕ ПИСЬМО ОТ РОБИИ & ФИНАЛ
          ==================================================================== -->
-    <section id="scene-7" class="scene" aria-label="Финал">
+    <section id="scene-7" class="scene" aria-label="Ответное письмо">
       <div class="scene-7-container">
         
-        <div class="finale-sparkle-crest">✦ ✧ ✦</div>
-        
-        <h2 class="finale-title">
-          Спасибо за то, что ты есть под этим небом, <em>Робия</em>.
-        </h2>
+        <!-- Этап 1: Форма написания письма -->
+        <div id="reply-form-stage" class="reply-stage active">
+          <div class="scene-header-block">
+            <span class="scene-tag">Твой ответ тайному поклоннику</span>
+            <h2 class="scene-heading">Если ты захочешь что-то сказать...</h2>
+            <p class="scene-subtext">
+              Напиши пару тёплых строк. Это письмо улетит прямо ко мне и останется только между нами.
+            </p>
+          </div>
 
-        <p class="finale-body">
-          Куда бы ни вела жизнь наши шаги, просто знай: пока в этом мире есть девушка с такими невероятными глазами и доброй душой, этот мир остаётся по-настоящему прекрасным.
-        </p>
+          <div class="reply-card-wrapper" id="replyCardWrapper">
+            <!-- Быстрые реакции-стикеры -->
+            <div class="reply-mood-dock" id="replyMoodDock">
+              <button type="button" class="reply-mood-chip active" data-mood="Улыбнулась">🌸 Улыбнулась</button>
+              <button type="button" class="reply-mood-chip" data-mood="Мне приятно">✨ Мне приятно</button>
+              <button type="button" class="reply-mood-chip" data-mood="Очень тепло">💖 Очень тепло</button>
+              <button type="button" class="reply-mood-chip" data-mood="Догадываюсь, кто ты">🤫 Догадываюсь</button>
+            </div>
 
-        <div class="finale-signature-box">
-          <span>— ТВОЙ ТАЙНЫЙ ПОКЛОННИК —</span>
+            <!-- Текстовое поле письма -->
+            <div class="reply-textarea-box">
+              <textarea 
+                id="replyTextarea" 
+                class="reply-textarea" 
+                rows="4" 
+                placeholder="Напиши сюда всё, что чувствуешь... Твои слова улетят в небо прямо ко мне."
+                maxlength="800"
+              ></textarea>
+              <div class="reply-char-counter"><span id="replyCharCount">0</span>/800</div>
+            </div>
+
+            <!-- Кнопка отправки с анимацией полёта -->
+            <button id="btn-send-letter" class="btn-cinematic pulse-aura" aria-label="Отправить письмо">
+              ОТПРАВИТЬ ПИСЬМО В НЕБО <svg class="inline-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="var(--color-gold)"/></svg>
+            </button>
+          </div>
         </div>
 
-        <button id="btn-replay-journey" class="btn-cinematic" aria-label="Пережить заново">
-          <svg class="inline-btn-svg spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> ПРОЖИТЬ ИСТОРИЮ СНОВА
-        </button>
+        <!-- Этап 2: Финальная благодарность после улетевшего письма -->
+        <div id="reply-sent-stage" class="reply-stage" style="display: none;">
+          <div class="finale-sparkle-crest">✦ ✧ ✦</div>
+          
+          <h2 class="finale-title">
+            Твоё письмо улетело <em>прямо в сердце</em>.
+          </h2>
+
+          <p class="finale-body">
+            Спасибо за каждый тёплый ответ, за твою улыбку и за то, что ты есть под этим небом, Робия. Куда бы ни вела жизнь наши шаги, этот мир остаётся прекрасным, пока в нём живёт такой свет.
+          </p>
+
+          <div class="finale-signature-box">
+            <span>— ТВОЙ ТАЙНЫЙ ПОКЛОННИК —</span>
+          </div>
+
+          <button id="btn-replay-journey" class="btn-cinematic" aria-label="Пережить заново">
+            <svg class="inline-btn-svg spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> ПРОЖИТЬ ИСТОРИЮ СНОВА
+          </button>
+        </div>
 
       </div>
     </section>

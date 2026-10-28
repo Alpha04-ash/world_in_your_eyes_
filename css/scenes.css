@@ -825,7 +825,7 @@
 }
 
 /* ==========================================================================
-   SCENE 7: FINALE & REPLAY (ФИНАЛ)
+   SCENE 7: REPLY LETTER FROM ROBIYA & FINALE (ОТВЕТНОЕ ПИСЬМО И ФИНАЛ)
    ========================================================================== */
 .scene-7-container {
   max-width: 640px;
@@ -835,6 +835,144 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.reply-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transition: opacity 0.6s var(--ease-cinematic);
+}
+
+.reply-card-wrapper {
+  background: radial-gradient(circle at 10% 20%, #171b38 0%, #0d1028 100%);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 24px;
+  padding: clamp(16px, 3vh, 26px) clamp(16px, 3.5vw, 26px);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(229, 197, 131, 0.15);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  transform-origin: center center;
+}
+
+.reply-mood-dock {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: clamp(10px, 1.8vh, 16px);
+  width: 100%;
+}
+
+.reply-mood-chip {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: rgba(14, 18, 38, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 2.3vw, 0.8rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-spring);
+  white-space: nowrap;
+}
+
+.reply-mood-chip:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-bright);
+  transform: translateY(-1px);
+}
+
+.reply-mood-chip.active {
+  background: linear-gradient(135deg, rgba(229, 197, 131, 0.28) 0%, rgba(243, 182, 198, 0.24) 100%);
+  border-color: var(--color-gold);
+  color: var(--color-gold-bright);
+  box-shadow: 0 0 15px rgba(229, 197, 131, 0.35);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.reply-textarea-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: clamp(12px, 2vh, 18px);
+}
+
+.reply-textarea {
+  width: 100%;
+  min-height: clamp(85px, 15vh, 120px);
+  max-height: 160px;
+  resize: none;
+  background: rgba(7, 10, 26, 0.75);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 16px;
+  padding: 12px 14px 24px;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--color-cream);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.reply-textarea:focus {
+  border-color: var(--color-gold-bright);
+  box-shadow: 0 0 20px rgba(229, 197, 131, 0.25);
+}
+
+.reply-textarea::placeholder {
+  color: rgba(251, 248, 242, 0.45);
+  font-style: italic;
+}
+
+.reply-char-counter {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  pointer-events: none;
+}
+
+@keyframes letterFlyAway {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+  }
+  20% {
+    transform: translateY(-25px) scale(0.96) rotate(-2deg);
+    filter: brightness(1.2) drop-shadow(0 0 30px rgba(229, 197, 131, 0.8));
+  }
+  45% {
+    transform: translateY(-120px) scale(0.75) rotate(7deg);
+    filter: brightness(1.5) drop-shadow(0 0 45px rgba(243, 182, 198, 0.9));
+  }
+  75% {
+    transform: translateY(-450px) translateX(60px) scale(0.4) rotate(-18deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-900px) translateX(120px) scale(0.1) rotate(-35deg);
+    opacity: 0;
+    filter: brightness(2);
+  }
+}
+
+.reply-card-wrapper.flying-away {
+  animation: letterFlyAway 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: none;
 }
 
 .finale-sparkle-crest {
@@ -846,11 +984,11 @@
 
 .finale-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-size: clamp(2rem, 6.5vw, 3.4rem);
   font-weight: 400;
   line-height: 1.25;
   color: var(--color-cream);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .finale-title em {
@@ -860,14 +998,14 @@
 
 .finale-body {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 3vw, 1.35rem);
-  line-height: 1.8;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  line-height: 1.75;
   color: var(--text-secondary);
-  margin-bottom: 44px;
+  margin-bottom: 32px;
 }
 
 .finale-signature-box {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   color: var(--color-gold);
@@ -1221,6 +1359,35 @@
   .wishes-output-desc {
     font-size: clamp(0.82rem, 2.7vw, 0.96rem);
     line-height: 1.4;
+  }
+
+  /* Scene 7 - Reply Letter Mobile */
+  .reply-card-wrapper {
+    padding: clamp(10px, 1.8vh, 16px) clamp(10px, 2.5vw, 16px);
+    border-radius: 18px;
+    max-width: 420px;
+  }
+
+  .reply-mood-dock {
+    gap: 4px;
+    margin-bottom: clamp(6px, 1.2vh, 10px);
+  }
+
+  .reply-mood-chip {
+    padding: 5px 9px;
+    font-size: 0.68rem;
+  }
+
+  .reply-textarea-box {
+    margin-bottom: clamp(8px, 1.4vh, 14px);
+  }
+
+  .reply-textarea {
+    min-height: clamp(65px, 11vh, 85px);
+    padding: 8px 10px 20px;
+    font-size: clamp(0.85rem, 2.8vw, 0.98rem);
+    line-height: 1.45;
+    border-radius: 12px;
   }
 
   /* Scene 7 - Finale */

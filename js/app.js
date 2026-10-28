@@ -426,27 +426,137 @@ function initScene6() {
 }
 
 /* ==========================================================================
-   СЦЕНА 7: ФИНАЛ
+   СЦЕНА 7: ОТВЕТНОЕ ПИСЬМО ОТ РОБИИ & ФИНАЛ
    ========================================================================== */
 function initScene7() {
+  const formStage = document.getElementById('reply-form-stage');
+  const sentStage = document.getElementById('reply-sent-stage');
+  const cardWrapper = document.getElementById('replyCardWrapper');
+  const moodChips = document.querySelectorAll('.reply-mood-chip');
+  const textarea = document.getElementById('replyTextarea');
+  const charCounter = document.getElementById('replyCharCount');
+  const sendBtn = document.getElementById('btn-send-letter');
   const replayBtn = document.getElementById('btn-replay-journey');
 
-  const observer = new MutationObserver(() => {
-    const s7 = document.getElementById('scene-7');
-    if (s7 && s7.classList.contains('active')) {
+  let selectedMood = '🌸 Улыбнулась';
+
+  // Переключение настроения-стикера
+  moodChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      moodChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      selectedMood = chip.getAttribute('data-mood') || chip.textContent.trim();
+
+      if (window.soundEngine) {
+        window.soundEngine.playChime(659.25);
+      }
+    });
+  });
+
+  // Счетчик символов
+  if (textarea && charCounter) {
+    textarea.addEventListener('input', () => {
+      charCounter.textContent = textarea.value.length;
+    });
+  }
+
+  // Отправка письма с анимацией полёта
+  if (sendBtn) {
+    sendBtn.addEventListener('click', () => {
+      const messageText = textarea ? textarea.value.trim() : '';
+
+      const letterData = {
+        id: 'letter_' + Date.now(),
+        date: new Date().toLocaleString('ru-RU', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        }),
+        mood: selectedMood,
+        message: messageText || '«(Без слов — с тёплой улыбкой)»',
+        timestamp: Date.now()
+      };
+
+      // 1. Сохраняем локально
+      try {
+        const stored = JSON.parse(localStorage.getItem('robiya_secret_letters') || '[]');
+        stored.unshift(letterData);
+        localStorage.setItem('robiya_secret_letters', JSON.stringify(stored));
+      } catch (e) {
+        console.warn('LocalStorage save error:', e);
+      }
+
+      // 2. Отправляем в бесплатный облачный шлюз ntfy (чтобы автор получил на телефон и в /admin)
+      try {
+        fetch('https://ntfy.sh/robiya_secret_letters_abubakr_2026', {
+          method: 'POST',
+          headers: {
+            'Title': encodeURIComponent('💌 Робия ответила на твоё письмо!'),
+            'Tags': 'sparkles,heart,love_letter',
+            'Priority': 'urgent'
+          },
+          body: `Настроение: ${letterData.mood}\n\nСлова Робии:\n${letterData.message}\n\nВремя отправки: ${letterData.date}`
+        }).catch(() => {});
+      } catch (e) {}
+
+      // 3. Отправляем на локальный / serverless endpoint
+      try {
+        fetch('/api/letter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(letterData)
+        }).catch(() => {});
+      } catch (e) {}
+
+      // 4. Кинематографическая 3D-анимация улетающего письма
+      if (cardWrapper) {
+        cardWrapper.classList.add('flying-away');
+      }
+
       if (window.soundEngine) {
         window.soundEngine.playFinaleChords();
       }
-    }
-  });
 
-  const s7 = document.getElementById('scene-7');
-  if (s7) {
-    observer.observe(s7, { attributes: true, attributeFilter: ['class'] });
+      // Взрыв звёздных искр по траектории взлёта
+      if (window.particleSystem && cardWrapper) {
+        const rect = cardWrapper.getBoundingClientRect();
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => {
+            window.particleSystem.burst(
+              rect.left + rect.width / 2 + (Math.random() - 0.5) * 80,
+              rect.top + rect.height / 2 - i * 50,
+              18
+            );
+          }, i * 220);
+        }
+      }
+
+      // 5. Переход к финальной благодарности
+      setTimeout(() => {
+        if (formStage) formStage.style.display = 'none';
+        if (sentStage) {
+          sentStage.style.display = 'flex';
+          sentStage.classList.add('anim-fade-in-up');
+        }
+        if (window.soundEngine) {
+          window.soundEngine.playChime(880);
+        }
+      }, 1250);
+    });
   }
 
+  // Пережить историю снова
   if (replayBtn) {
     replayBtn.addEventListener('click', () => {
+      // Сбрасываем состояние формы для следующего раза
+      if (textarea) textarea.value = '';
+      if (charCounter) charCounter.textContent = '0';
+      if (cardWrapper) cardWrapper.classList.remove('flying-away');
+      if (formStage) formStage.style.display = 'flex';
+      if (sentStage) sentStage.style.display = 'none';
+
       window.sceneManager.transitionTo('scene-1');
     });
   }

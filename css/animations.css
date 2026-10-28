@@ -1,0 +1,94 @@
+/**
+ * ROBIYA • A CINEMATIC JOURNEY
+ * Keyframe Animations & Micro-Interactions
+ */
+
+.anim-fade-in-up {
+  animation: fadeInUp 1s var(--ease-cinematic) forwards;
+  opacity: 0;
+}
+
+.anim-delay-1 { animation-delay: 0.15s; }
+.anim-delay-2 { animation-delay: 0.35s; }
+.anim-delay-3 { animation-delay: 0.55s; }
+.anim-delay-4 { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-breathing-light {
+  animation: breathingLight 8s ease-in-out infinite alternate;
+}
+
+@keyframes breathingLight {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+/* Starlight Twinkle & Shimmer */
+@keyframes twinkleGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px var(--color-gold));
+  }
+}
+
+/* Shimmering Text Gradient */
+.shimmer-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-cream) 0%,
+    var(--color-gold-bright) 35%,
+    var(--color-rose) 70%,
+    var(--color-cream) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerFlow 5s linear infinite;
+}
+
+@keyframes shimmerFlow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Letter Stamp Pulse */
+@keyframes stampGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(229, 197, 131, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(229, 197, 131, 0.8), 0 0 60px rgba(243, 182, 198, 0.5);
+  }
+}
+
+/* Floating Lantern / Star */
+@keyframes floatLantern {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

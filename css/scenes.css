@@ -1,0 +1,1249 @@
+/**
+ * ROBIYA • A CINEMATIC JOURNEY
+ * Scene-Specific Layouts & Component Styles
+ * Mobile-First, Touch-Optimized, Apple-Level Polish
+ */
+
+/* ==========================================================================
+   SCENE 1: THE MYSTERIOUS BEGINNING (ТАИНСТВЕННОЕ НАЧАЛО)
+   ========================================================================== */
+.scene-1-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.scene-1-prelude {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+
+.scene-1-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6.5vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--color-cream);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7), 0 0 40px rgba(229, 197, 131, 0.2);
+  margin-bottom: 48px;
+  padding: 0 12px;
+}
+
+.scene-1-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold-bright);
+}
+
+.scene-1-btn-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   SCENE 2: WHO IS IT? & NAME REVEAL (ОТКРЫТИЕ ИМЕНИ РОБИЯ)
+   ========================================================================== */
+.scene-2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.scene-2-question-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.scene-2-prelude {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.scene-2-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--color-cream);
+  margin-bottom: 28px;
+}
+
+.scene-2-reveal-stage {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.scene-2-reveal-stage.active {
+  display: flex;
+}
+
+.name-reveal-chamber {
+  margin: 20px 0 28px;
+}
+
+.name-letters-display {
+  display: flex;
+  gap: clamp(6px, 2vw, 14px);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.name-char-box {
+  width: clamp(44px, 12vw, 68px);
+  height: clamp(56px, 15vw, 84px);
+  border-radius: 16px;
+  background: rgba(18, 24, 48, 0.8);
+  border: 1px solid var(--glass-border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 600;
+  color: var(--color-gold-bright);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(229, 197, 131, 0.2);
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.6s var(--ease-spring);
+}
+
+.name-char-box.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.name-meaning-card {
+  background: var(--bg-dark-card);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 20px;
+  padding: 24px 28px;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--glass-shadow);
+}
+
+.name-meaning-letter {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-rose);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.name-meaning-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-cream);
+}
+
+/* ==========================================================================
+   INTERACTIVE DODGING / RUNAWAY BUTTON ARENA
+   ========================================================================== */
+.runaway-arena-block {
+  width: 100%;
+  max-width: 620px;
+  min-height: 220px;
+  position: relative;
+  margin: 10px auto 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 18, 38, 0.45);
+  border: 1px dashed rgba(229, 197, 131, 0.25);
+  border-radius: 24px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.runaway-btn-anchor {
+  position: relative;
+  width: 100%;
+  height: 160px;
+}
+
+.btn-runaway {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 28px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(229, 197, 131, 0.22) 0%, rgba(243, 182, 198, 0.18) 100%);
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold-bright);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: left 0.12s cubic-bezier(0.18, 0.89, 0.32, 1.28), 
+              top 0.12s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+              transform 0.14s ease,
+              background 0.3s,
+              box-shadow 0.3s;
+  white-space: nowrap;
+  user-select: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 197, 131, 0.2);
+}
+
+.btn-runaway.caught {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #fff !important;
+  border-color: #a7f3d0 !important;
+  box-shadow: 0 0 45px rgba(16, 185, 129, 0.7), 0 0 25px rgba(229, 197, 131, 0.5) !important;
+  transform: translate(-50%, -50%) scale(1.15) !important;
+  animation: pulseAura 1.5s infinite;
+}
+
+.dodge-toast {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-rose);
+  min-height: 28px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.secret-caught-box {
+  display: none;
+  position: absolute;
+  inset: 10px;
+  background: rgba(18, 24, 48, 0.96);
+  border: 1px solid var(--color-gold);
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow: 0 0 30px rgba(229, 197, 131, 0.3);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  animation: fadeIn 0.5s ease;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.secret-caught-box.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.secret-caught-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--color-cream);
+  text-align: center;
+}
+
+/* ==========================================================================
+   SCENE 3: WHY I HAVE NEVER TALKED TO YOU (ПОЧЕМУ Я МОЛЧУ)
+   ========================================================================== */
+.scene-3-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scene-header-block {
+  margin-bottom: 28px;
+}
+
+.scene-tag {
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.scene-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-cream);
+  line-height: 1.35;
+}
+
+.scene-subtext {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 10px auto 0;
+  line-height: 1.6;
+}
+
+.confession-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto clamp(10px, 2vh, 18px);
+}
+
+.confession-tab-btn {
+  flex: 1;
+  padding: clamp(8px, 1.6vh, 12px) clamp(8px, 2vw, 16px);
+  border-radius: 30px;
+  background: rgba(14, 18, 38, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 2.2vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all 0.3s var(--ease-spring);
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.confession-tab-btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-cream);
+  transform: translateY(-2px);
+}
+
+.confession-tab-btn.active {
+  background: linear-gradient(135deg, rgba(229, 197, 131, 0.28) 0%, rgba(243, 182, 198, 0.22) 100%);
+  border-color: var(--color-gold);
+  color: var(--color-gold-bright);
+  box-shadow: 0 0 20px rgba(229, 197, 131, 0.35);
+  transform: translateY(-2px);
+}
+
+.confession-display-card {
+  background: var(--bg-dark-card);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 22px;
+  padding: clamp(16px, 3vh, 24px) clamp(18px, 4vw, 28px);
+  width: 100%;
+  max-width: 540px;
+  min-height: clamp(100px, 16vh, 130px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  margin: 0 auto clamp(14px, 3vh, 24px);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease;
+}
+
+.confession-display-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-gold), var(--color-rose));
+}
+
+.confession-display-tag {
+  font-family: var(--font-sans);
+  font-size: clamp(0.68rem, 2vw, 0.76rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 4px;
+}
+
+.confession-display-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.8vw, 1.45rem);
+  font-weight: 600;
+  color: var(--color-cream);
+  margin-bottom: 6px;
+}
+
+.confession-display-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.92rem, 3vw, 1.12rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   SCENE 4: THE WONDER IN HER EYES (ЧУДО ТВОИХ ГЛАЗ)
+   ========================================================================== */
+.scene-4-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stickers Gallery */
+.stickers-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 580px;
+  margin: 16px auto 24px;
+}
+
+.sticker-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(24, 30, 64, 0.8) 0%, rgba(14, 18, 38, 0.9) 100%);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 20px;
+  padding: 20px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 197, 131, 0.1);
+  transition: all 0.35s var(--ease-spring);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  overflow: hidden;
+}
+
+.sticker-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(229, 197, 131, 0.3);
+  border-color: var(--color-gold-bright);
+}
+
+.sticker-card.active {
+  background: linear-gradient(135deg, rgba(229, 197, 131, 0.22) 0%, rgba(243, 182, 198, 0.22) 100%);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 35px var(--color-gold-glow);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.inline-btn-svg {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.btn-cinematic:hover .inline-btn-svg {
+  transform: scale(1.15) rotate(6deg);
+}
+
+.spin-icon {
+  margin-left: 0;
+  margin-right: 6px;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-cinematic:hover .spin-icon {
+  transform: rotate(180deg) scale(1.15);
+}
+
+.sticker-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.sticker-svg-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.sticker-svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(229, 197, 131, 0.3));
+  transition: transform 0.3s;
+}
+
+.sticker-card:hover .sticker-svg-wrap,
+.sticker-card.active .sticker-svg-wrap {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.sticker-title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-cream);
+  text-transform: uppercase;
+}
+
+.sticker-shine {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: top 0.6s, left 0.6s;
+}
+
+.sticker-card:hover .sticker-shine {
+  top: 100%;
+  left: 100%;
+}
+
+.sticker-revealed-card {
+  background: var(--bg-dark-card);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 22px;
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 580px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 32px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  animation: fadeIn 0.4s ease;
+}
+
+.sticker-revealed-icon {
+  font-size: 2rem;
+  animation: pulseAura 3s infinite;
+}
+
+.sticker-revealed-title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.sticker-revealed-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--color-cream);
+  text-align: center;
+}
+
+/* ==========================================================================
+   SCENE 5: THE UNSPOKEN LETTER (ТАЙНОЕ ПИСЬМО)
+   ========================================================================== */
+.scene-5-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope-wrapper {
+  width: 100%;
+  margin: 16px 0 32px;
+  perspective: 1000px;
+}
+
+.parchment-letter {
+  background: radial-gradient(circle at 10% 20%, #151833 0%, #0d0f24 100%);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 24px;
+  padding: clamp(24px, 5vw, 44px) clamp(20px, 4vw, 36px);
+  text-align: left;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 45px rgba(229, 197, 131, 0.15);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  position: relative;
+}
+
+.letter-sticker-seal {
+  position: absolute;
+  top: -24px;
+  right: 32px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(229, 197, 131, 0.95) 0%, rgba(230, 92, 123, 0.95) 100%);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(229, 197, 131, 0.6);
+  animation: stampGlow 3s infinite;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+}
+
+.letter-sticker-seal:hover {
+  transform: translateY(-3px) rotate(-3deg) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 35px rgba(243, 182, 198, 0.8);
+}
+
+.sticker-seal-char {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.sticker-seal-hint {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.letter-greeting {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+}
+
+.letter-body p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.5vw, 1.22rem);
+  line-height: 1.85;
+  color: var(--color-cream);
+  margin-bottom: 16px;
+  opacity: 0.95;
+}
+
+.letter-body em {
+  font-style: italic;
+  color: var(--color-rose);
+  font-weight: 600;
+}
+
+.letter-closing {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.letter-sign-note {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.letter-signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.45rem;
+  color: var(--color-gold-bright);
+}
+
+/* ==========================================================================
+   SCENE 6: STARLIGHT WISHES FOR ROBIYA (ПОЖЕЛАНИЯ)
+   ========================================================================== */
+.scene-6-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wishes-stars-dock {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 20px);
+  flex-wrap: wrap;
+  margin: 24px 0 28px;
+  width: 100%;
+}
+
+.wish-star-btn {
+  background: var(--bg-dark-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 16px 14px;
+  width: clamp(90px, 25vw, 115px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all 0.3s var(--ease-spring);
+}
+
+.wish-star-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+}
+
+.wish-star-btn.active {
+  background: rgba(229, 197, 131, 0.18);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 25px rgba(229, 197, 131, 0.4);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.star-svg-wrap {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.star-svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(229, 197, 131, 0.25));
+  transition: transform 0.3s;
+}
+
+.wish-star-btn:hover .star-svg-wrap,
+.wish-star-btn.active .star-svg-wrap {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px var(--color-gold));
+}
+
+.star-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wishes-output-card {
+  background: var(--bg-dark-card);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: 20px;
+  padding: 24px 28px;
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  box-shadow: var(--glass-shadow);
+}
+
+.wishes-output-title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 6px;
+}
+
+.wishes-output-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--color-cream);
+}
+
+/* ==========================================================================
+   SCENE 7: FINALE & REPLAY (ФИНАЛ)
+   ========================================================================== */
+.scene-7-container {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finale-sparkle-crest {
+  font-size: 2.2rem;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+  animation: pulseAura 3s infinite;
+}
+
+.finale-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--color-cream);
+  margin-bottom: 24px;
+}
+
+.finale-title em {
+  font-style: italic;
+  color: var(--color-gold-bright);
+}
+
+.finale-body {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 44px;
+}
+
+.finale-signature-box {
+  margin-bottom: 40px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   MOBILE-FIRST & ZERO-SCROLL GUARANTEE (@media rules)
+   ========================================================================== */
+@media (max-width: 600px), (max-height: 800px) {
+  /* Scene Container Padding */
+  .scene {
+    padding: calc(var(--safe-top) + 6px) 14px calc(var(--safe-bottom) + 8px);
+    justify-content: center;
+  }
+
+  /* Audio toggle button */
+  .audio-control {
+    top: calc(var(--safe-top) + 4px);
+    right: calc(var(--safe-right) + 4px);
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
+
+  /* Universal Buttons */
+  .btn-cinematic {
+    padding: clamp(10px, 1.8vh, 13px) clamp(20px, 4.5vw, 28px);
+    font-size: clamp(0.78rem, 2.6vw, 0.86rem);
+    letter-spacing: 0.08em;
+  }
+
+  /* Universal Headers */
+  .scene-header-block {
+    margin-bottom: clamp(6px, 1.4vh, 12px);
+  }
+
+  .scene-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 2px;
+  }
+
+  .scene-heading {
+    font-size: clamp(1.2rem, 4.4vw, 1.65rem);
+    line-height: 1.25;
+  }
+
+  .scene-subtext {
+    font-size: clamp(0.74rem, 2.5vw, 0.84rem);
+    line-height: 1.35;
+    margin: 3px auto 0;
+    max-width: 320px;
+  }
+
+  /* Scene 1 */
+  .scene-1-prelude {
+    font-size: 0.75rem;
+    margin-bottom: clamp(8px, 1.8vh, 16px);
+  }
+
+  .scene-1-title {
+    font-size: clamp(1.35rem, 5vw, 2.1rem);
+    line-height: 1.35;
+    margin-bottom: clamp(16px, 3.5vh, 28px);
+    padding: 0 4px;
+  }
+
+  /* Scene 2 */
+  .scene-2-prelude {
+    font-size: 0.75rem;
+  }
+
+  .scene-2-heading {
+    font-size: clamp(1.3rem, 4.6vw, 1.85rem);
+    margin-bottom: clamp(14px, 2.5vh, 22px);
+  }
+
+  .name-reveal-chamber {
+    margin: 8px 0 12px;
+  }
+
+  .name-letters-display {
+    gap: clamp(4px, 1.5vw, 8px);
+    margin-bottom: clamp(8px, 1.5vh, 14px);
+  }
+
+  .name-char-box {
+    width: clamp(38px, 11vw, 52px);
+    height: clamp(46px, 13vw, 64px);
+    font-size: clamp(1.5rem, 5vw, 2.1rem);
+    border-radius: 12px;
+  }
+
+  .name-meaning-card {
+    padding: clamp(8px, 1.4vh, 12px) clamp(10px, 2.5vw, 16px);
+    min-height: clamp(65px, 10vh, 85px);
+    margin: 0 auto clamp(8px, 1.5vh, 14px);
+    max-width: 95%;
+  }
+
+  .name-meaning-letter {
+    font-size: 0.72rem;
+    margin-bottom: 2px;
+  }
+
+  .name-meaning-text {
+    font-size: clamp(0.85rem, 2.8vw, 1.02rem);
+    line-height: 1.4;
+  }
+
+  .runaway-arena-block {
+    height: clamp(120px, 18vh, 150px);
+    min-height: 110px;
+    margin: 4px auto clamp(8px, 1.5vh, 14px);
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .runaway-btn-anchor {
+    height: 100%;
+  }
+
+  .btn-runaway {
+    padding: 9px 18px;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  .dodge-toast {
+    font-size: 0.85rem;
+    min-height: 20px;
+  }
+
+  .secret-caught-box {
+    inset: 6px;
+    padding: 10px 14px;
+    border-radius: 14px;
+  }
+
+  .secret-caught-text {
+    font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+    line-height: 1.4;
+  }
+
+  /* Scene 3 */
+  .confession-tabs {
+    gap: 6px;
+    margin: 0 auto clamp(6px, 1.4vh, 12px);
+  }
+
+  .confession-tab-btn {
+    padding: 7px 6px;
+    font-size: clamp(0.68rem, 2.2vw, 0.78rem);
+  }
+
+  .confession-display-card {
+    padding: clamp(10px, 1.8vh, 16px) clamp(12px, 2.8vw, 18px);
+    min-height: clamp(80px, 13vh, 105px);
+    margin: 0 auto clamp(10px, 2vh, 18px);
+    border-radius: 16px;
+  }
+
+  .confession-display-tag {
+    font-size: 0.65rem;
+    margin-bottom: 2px;
+  }
+
+  .confession-display-title {
+    font-size: clamp(1rem, 3.4vw, 1.25rem);
+    margin-bottom: 4px;
+  }
+
+  .confession-display-text {
+    font-size: clamp(0.82rem, 2.7vw, 0.95rem);
+    line-height: 1.45;
+  }
+
+  /* Scene 4 - Single-row 4 stickers */
+  .stickers-gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 6px auto clamp(8px, 1.5vh, 14px);
+    max-width: 420px;
+  }
+
+  .sticker-card {
+    padding: 8px 3px;
+    border-radius: 12px;
+    gap: 3px;
+  }
+
+  .sticker-svg-wrap {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sticker-svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .sticker-title {
+    font-size: 0.62rem;
+    letter-spacing: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticker-revealed-card {
+    padding: clamp(8px, 1.5vh, 14px) clamp(10px, 2.5vw, 16px);
+    min-height: clamp(75px, 12vh, 95px);
+    margin: 0 auto clamp(8px, 1.8vh, 16px);
+    border-radius: 16px;
+    gap: 4px;
+  }
+
+  .sticker-revealed-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sticker-revealed-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .sticker-revealed-title {
+    font-size: 0.7rem;
+  }
+
+  .sticker-revealed-desc {
+    font-size: clamp(0.82rem, 2.7vw, 0.96rem);
+    line-height: 1.4;
+  }
+
+  /* Scene 5 - Secret Letter */
+  .envelope-wrapper {
+    margin: 4px 0 clamp(8px, 1.6vh, 16px);
+    max-width: 440px;
+  }
+
+  .parchment-letter {
+    padding: clamp(12px, 1.8vh, 18px) clamp(12px, 2.8vw, 18px);
+    border-radius: 16px;
+  }
+
+  .letter-sticker-seal {
+    top: -10px;
+    right: 12px;
+    padding: 4px 10px;
+    gap: 5px;
+  }
+
+  .sticker-seal-char {
+    font-size: 0.95rem;
+  }
+
+  .sticker-seal-hint {
+    font-size: 0.62rem;
+  }
+
+  .letter-greeting {
+    font-size: clamp(1.1rem, 3.6vw, 1.35rem);
+    margin-bottom: 6px;
+  }
+
+  .letter-body {
+    max-height: clamp(130px, 26vh, 180px);
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(229, 197, 131, 0.35) transparent;
+  }
+
+  .letter-body::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .letter-body::-webkit-scrollbar-thumb {
+    background: rgba(229, 197, 131, 0.35);
+    border-radius: 3px;
+  }
+
+  .letter-body p {
+    font-size: clamp(0.8rem, 2.6vw, 0.92rem);
+    line-height: 1.48;
+    margin-bottom: 6px;
+  }
+
+  .letter-closing {
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+
+  .letter-sign-note {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  .letter-signature {
+    font-size: clamp(1rem, 3.2vw, 1.2rem);
+  }
+
+  /* Scene 6 - Single row 5 stars */
+  .wishes-stars-dock {
+    flex-wrap: nowrap;
+    gap: 5px;
+    margin: 6px auto clamp(8px, 1.5vh, 14px);
+    max-width: 420px;
+  }
+
+  .wish-star-btn {
+    width: calc(20% - 4px);
+    min-width: 0;
+    padding: 6px 2px;
+    border-radius: 12px;
+    gap: 3px;
+  }
+
+  .star-svg-wrap {
+    width: 28px;
+    height: 28px;
+  }
+
+  .star-svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .star-label {
+    font-size: 0.6rem;
+    letter-spacing: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .wishes-output-card {
+    padding: clamp(8px, 1.5vh, 14px) clamp(10px, 2.5vw, 16px);
+    min-height: clamp(70px, 11vh, 90px);
+    margin: 0 auto clamp(8px, 1.8vh, 16px);
+    border-radius: 16px;
+  }
+
+  .wishes-output-title {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  .wishes-output-desc {
+    font-size: clamp(0.82rem, 2.7vw, 0.96rem);
+    line-height: 1.4;
+  }
+
+  /* Scene 7 - Finale */
+  .finale-sparkle-crest {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .finale-title {
+    font-size: clamp(1.35rem, 4.6vw, 2.1rem);
+    line-height: 1.25;
+    margin-bottom: clamp(10px, 1.8vh, 16px);
+  }
+
+  .finale-body {
+    font-size: clamp(0.82rem, 2.7vw, 0.98rem);
+    line-height: 1.5;
+    margin-bottom: clamp(12px, 2.2vh, 20px);
+    max-width: 380px;
+  }
+
+  .finale-signature-box {
+    font-size: clamp(0.72rem, 2.2vw, 0.82rem);
+    margin-bottom: clamp(14px, 2.5vh, 22px);
+  }
+}

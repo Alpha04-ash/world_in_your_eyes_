@@ -1,0 +1,263 @@
+/**
+ * ROBIYA • A CINEMATIC JOURNEY
+ * Design System Tokens & Base Reset
+ * Mobile-First, Apple-Level Craft, Sophisticated Palette & Typography
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-deep: #050713;
+  --bg-dark-surface: rgba(14, 18, 38, 0.75);
+  --bg-dark-card: rgba(18, 24, 48, 0.85);
+
+  --color-cream: #fbf8f3;
+  --color-cream-soft: #eae3d5;
+  --color-gold: #e5c583;
+  --color-gold-bright: #fcedb6;
+  --color-gold-glow: rgba(229, 197, 131, 0.45);
+  --color-gold-glow-deep: rgba(229, 197, 131, 0.15);
+
+  --color-rose: #f3b6c6;
+  --color-blush: #f9d8e1;
+  --color-ruby: #e65c7b;
+  --color-violet: #a78bfa;
+
+  --text-primary: #fcf9f2;
+  --text-secondary: rgba(251, 248, 242, 0.82);
+  --text-tertiary: rgba(251, 248, 242, 0.55);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Elevation & Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-gold: rgba(229, 197, 131, 0.35);
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --glass-blur: blur(20px);
+
+  /* Spacing & Sizing */
+  --safe-top: env(safe-area-inset-top, 16px);
+  --safe-bottom: env(safe-area-inset-bottom, 20px);
+  --safe-left: env(safe-area-inset-left, 16px);
+  --safe-right: env(safe-area-inset-right, 16px);
+
+  /* Transitions */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-normal: 0.6s;
+  --duration-slow: 1.2s;
+}
+
+/* Base Reset & Mobile-First Guard */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+/* Background Ambient Canvas & Glow */
+.cinematic-universe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cosmic-radial-glow {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(85vw, 650px);
+  height: min(85vw, 650px);
+  background: radial-gradient(circle, rgba(229, 197, 131, 0.16) 0%, rgba(243, 182, 198, 0.1) 45%, transparent 72%);
+  filter: blur(60px);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 1.2s var(--ease-cinematic), opacity 1.2s ease;
+}
+
+/* Audio Control Button */
+.audio-control {
+  position: fixed;
+  top: calc(var(--safe-top) + 8px);
+  right: calc(var(--safe-right) + 8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  background: rgba(14, 18, 38, 0.65);
+  border: 1px solid var(--glass-border);
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-cinematic);
+}
+
+.audio-control:hover {
+  background: rgba(229, 197, 131, 0.15);
+  border-color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+.sound-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.sound-wave span {
+  width: 2.5px;
+  height: 3px;
+  background-color: var(--color-gold);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.audio-control.playing .sound-wave span:nth-child(1) { animation: soundBar 0.9s infinite alternate; }
+.audio-control.playing .sound-wave span:nth-child(2) { animation: soundBar 1.2s infinite alternate 0.2s; }
+.audio-control.playing .sound-wave span:nth-child(3) { animation: soundBar 0.8s infinite alternate 0.4s; }
+
+@keyframes soundBar {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* Main Viewport Container */
+.experience-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* Scene Core */
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--safe-top) + 8px) 16px calc(var(--safe-bottom) + 12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96) translateY(18px);
+  transition: opacity 0.8s var(--ease-cinematic), transform 0.8s var(--ease-cinematic), visibility 0.8s;
+  pointer-events: none;
+  overflow: hidden; /* ZERO SCROLL ON PHONES */
+  box-sizing: border-box;
+}
+
+.scene.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.scene.exiting {
+  opacity: 0;
+  transform: scale(1.03) translateY(-18px);
+  pointer-events: none;
+}
+
+/* Cinematic Primary Button */
+.btn-cinematic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(229, 197, 131, 0.22) 0%, rgba(243, 182, 198, 0.18) 100%);
+  border: 1px solid var(--color-gold);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5),
+              0 0 25px var(--color-gold-glow-deep);
+  transition: all 0.4s var(--ease-cinematic);
+  user-select: none;
+}
+
+.btn-cinematic:hover {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-rose) 100%);
+  color: #050713;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px -5px rgba(229, 197, 131, 0.4),
+              0 0 35px var(--color-gold-glow);
+  border-color: #fff;
+}
+
+.btn-cinematic:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.pulse-aura {
+  animation: pulseAura 3s infinite ease-in-out;
+}
+
+@keyframes pulseAura {
+  0%, 100% {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px var(--color-gold-glow-deep);
+  }
+  50% {
+    box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.6), 0 0 40px var(--color-gold-glow);
+  }
+}

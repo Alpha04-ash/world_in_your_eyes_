@@ -510,30 +510,45 @@ function initScene7() {
         }).catch(() => {});
       } catch (e) {}
 
-      // 4. Кинематографическая 3D-анимация улетающего письма
+      // 4. Двухэтапная кинематографическая анимация: Сворачивание -> Полёт в звёзды
       if (cardWrapper) {
-        cardWrapper.classList.add('flying-away');
-      }
+        // Этап А: Письмо складывается в запечатанный звёздный конверт
+        cardWrapper.classList.add('wrapping-up');
 
-      if (window.soundEngine) {
-        window.soundEngine.playFinaleChords();
-      }
-
-      // Взрыв звёздных искр по траектории взлёта
-      if (window.particleSystem && cardWrapper) {
-        const rect = cardWrapper.getBoundingClientRect();
-        for (let i = 0; i < 4; i++) {
-          setTimeout(() => {
-            window.particleSystem.burst(
-              rect.left + rect.width / 2 + (Math.random() - 0.5) * 80,
-              rect.top + rect.height / 2 - i * 50,
-              18
-            );
-          }, i * 220);
+        if (window.soundEngine) {
+          window.soundEngine.playHarpArpeggio();
         }
+
+        if (window.particleSystem) {
+          const rect = cardWrapper.getBoundingClientRect();
+          window.particleSystem.burst(rect.left + rect.width / 2, rect.top + rect.height / 2, 22);
+        }
+
+        // Этап Б: Через 750мс свернутый конверт взмывает в небо
+        setTimeout(() => {
+          cardWrapper.classList.add('flying-away');
+
+          if (window.soundEngine) {
+            window.soundEngine.playFinaleChords();
+          }
+
+          // След из звёздных искр по траектории взлёта
+          if (window.particleSystem) {
+            const rect = cardWrapper.getBoundingClientRect();
+            for (let i = 0; i < 5; i++) {
+              setTimeout(() => {
+                window.particleSystem.burst(
+                  rect.left + rect.width / 2 + (Math.random() - 0.5) * 60 + i * 15,
+                  rect.top + rect.height / 2 - i * 65,
+                  16
+                );
+              }, i * 200);
+            }
+          }
+        }, 750);
       }
 
-      // 5. Переход к финальной благодарности
+      // 5. Переход к финальной благодарности после завершения полёта
       setTimeout(() => {
         if (formStage) formStage.style.display = 'none';
         if (sentStage) {
@@ -543,7 +558,7 @@ function initScene7() {
         if (window.soundEngine) {
           window.soundEngine.playChime(880);
         }
-      }, 1250);
+      }, 2100);
     });
   }
 
@@ -553,7 +568,10 @@ function initScene7() {
       // Сбрасываем состояние формы для следующего раза
       if (textarea) textarea.value = '';
       if (charCounter) charCounter.textContent = '0';
-      if (cardWrapper) cardWrapper.classList.remove('flying-away');
+      if (cardWrapper) {
+        cardWrapper.classList.remove('wrapping-up');
+        cardWrapper.classList.remove('flying-away');
+      }
       if (formStage) formStage.style.display = 'flex';
       if (sentStage) sentStage.style.display = 'none';
 

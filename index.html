@@ -444,30 +444,46 @@
           </div>
 
           <div class="reply-card-wrapper" id="replyCardWrapper">
-            <!-- Быстрые реакции-стикеры -->
-            <div class="reply-mood-dock" id="replyMoodDock">
-              <button type="button" class="reply-mood-chip active" data-mood="Улыбнулась">🌸 Улыбнулась</button>
-              <button type="button" class="reply-mood-chip" data-mood="Мне приятно">✨ Мне приятно</button>
-              <button type="button" class="reply-mood-chip" data-mood="Очень тепло">💖 Очень тепло</button>
-              <button type="button" class="reply-mood-chip" data-mood="Догадываюсь, кто ты">🤫 Догадываюсь</button>
+            <!-- Содержимое формы (плавно сворачивается в конверт) -->
+            <div class="reply-form-content" id="replyFormContent">
+              <!-- Быстрые реакции-стикеры -->
+              <div class="reply-mood-dock" id="replyMoodDock">
+                <button type="button" class="reply-mood-chip active" data-mood="Улыбнулась">🌸 Улыбнулась</button>
+                <button type="button" class="reply-mood-chip" data-mood="Мне приятно">✨ Мне приятно</button>
+                <button type="button" class="reply-mood-chip" data-mood="Очень тепло">💖 Очень тепло</button>
+                <button type="button" class="reply-mood-chip" data-mood="Догадываюсь, кто ты">🤫 Догадываюсь</button>
+              </div>
+
+              <!-- Текстовое поле письма -->
+              <div class="reply-textarea-box">
+                <textarea 
+                  id="replyTextarea" 
+                  class="reply-textarea" 
+                  rows="4" 
+                  placeholder="Напиши сюда всё, что чувствуешь... Твои слова улетят в небо прямо ко мне."
+                  maxlength="800"
+                ></textarea>
+                <div class="reply-char-counter"><span id="replyCharCount">0</span>/800</div>
+              </div>
+
+              <!-- Кнопка отправки с анимацией сворачивания и полёта -->
+              <button id="btn-send-letter" class="btn-cinematic pulse-aura" aria-label="Отправить письмо">
+                СВЕРНУТЬ И ОТПРАВИТЬ В НЕБО <svg class="inline-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="var(--color-gold)"/></svg>
+              </button>
             </div>
 
-            <!-- Текстовое поле письма -->
-            <div class="reply-textarea-box">
-              <textarea 
-                id="replyTextarea" 
-                class="reply-textarea" 
-                rows="4" 
-                placeholder="Напиши сюда всё, что чувствуешь... Твои слова улетят в небо прямо ко мне."
-                maxlength="800"
-              ></textarea>
-              <div class="reply-char-counter"><span id="replyCharCount">0</span>/800</div>
+            <!-- Свернутый звёздный конверт (проявляется при сворачивании) -->
+            <div class="envelope-folded-preview" id="envelopeFoldedPreview" aria-hidden="true">
+              <div class="folded-envelope-body">
+                <div class="envelope-top-flap"></div>
+                <div class="envelope-lines-pattern"></div>
+                <div class="envelope-wax-stamp">
+                  <span class="wax-stamp-letter">Р</span>
+                  <span class="wax-stamp-shimmer"></span>
+                </div>
+                <div class="envelope-dest-tag">В звёздное небо • Для Абубакра</div>
+              </div>
             </div>
-
-            <!-- Кнопка отправки с анимацией полёта -->
-            <button id="btn-send-letter" class="btn-cinematic pulse-aura" aria-label="Отправить письмо">
-              ОТПРАВИТЬ ПИСЬМО В НЕБО <svg class="inline-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="var(--color-gold)"/></svg>
-            </button>
           </div>
         </div>
 
